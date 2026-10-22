@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: pip-health-api
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: node index.js
+    healthCheckPath: /health
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: DOCTOR_API_KEY
+        value: demo-doctor-key
+      - key: ALLOWED_ORIGIN
+        value: "*"
